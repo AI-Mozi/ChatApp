@@ -1,0 +1,14 @@
+<div class="room-list center-align">
+
+<%= link_to new_room_path, class: "btn" do %>
+  Create new room
+<% end %>
+
+  <% if @rooms.present? %>
+    <% @rooms.each do |room| %>
+      <li><%= link_to room.name, room_path(room) %></li>
+    <% end %>
+  <% else %>
+     <li>No rooms created</li>
+  <% end %>
+</div>

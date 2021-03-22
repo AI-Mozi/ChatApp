@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ChatApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Chat App</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <% if user_signed_in? %>
+  <ul id="nav-mobile" class="sidenav sidenav-fixed">
+    <li>
+      <div class="user-view">
+        <div class="background">
+        </div>
+        <img class="circle" src="<%= gravatar_url(current_user)%>">
+        <span class="name"><%= current_user.username %></span>
+        <span class="email"><%= current_user.email %></span>
+      </div>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <%= render "rooms/list" %>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+  </ul>
+  <%end%>
+
+  <%= yield %>
+</body>
+
 </html>
