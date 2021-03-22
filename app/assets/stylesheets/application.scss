@@ -21,8 +21,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container{
-  padding-left: 240px;
+.main{
+  padding-left: 320px;;
 }
 .avatar{
   width: 64px;
@@ -31,4 +31,40 @@
 .room-list{
   text-align: center;
   padding-top: 25px;
+}
+.sidenav{
+  width: 300px !important;
+}
+.input{
+  width: 92%;
+}
+.chat{
+  background-color: blue;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 75vh;
+  overflow-y: scroll;
+}
+.form{
+  background-color: red;
+  margin: 0;
+}
+.message-avatar{
+  width: 32px;
+  height: 32px;
+}
+.message{
+  margin-left: 7px;
+  padding-left: 4px;
+  background-color: lightblue;
+  max-width: 45%;
+  padding-right: 4px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.each_message{
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

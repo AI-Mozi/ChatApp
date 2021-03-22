@@ -1,23 +1,31 @@
-<div class="container">
+<div class="main">
   <h1>
-  <%= @room.name %>
+    <%= @room.name %>
   </h1>
 
-  <div class="row">
-    <div class="col s12">
-      <% @room_messages.each do |message| %>
-        <%= message %><br>
-      <%end%>
+  <div class="row chat">
+    <div class="messages">
+      <div class="col s12">
+        <% @room_messages.each do |message| %>
+          <div class="each_message">
+          <img src="<%= gravatar_url(message.user)%>" class="message-avatar circle">
+          <div class="message valign-wrapper">
+            <%= message.message %><br>
+          </div>
+          </div>
+        <%end%>
+      </div>
     </div>
+  </div>
 
-  <div class="row">
+  <div class="form">
     <div class="col s12">
       <%= form_for @room_message, remote: true do |f|%>
-        <%=f.text_area :message %>
-        <%=f.submit%>
+      <%=f.text_area :message, class: "input-field input inline" %>
+      <%=f.submit "SEND", :class => "btn" %>
 
-        <%=f.hidden_field :user_id, :value => current_user.id %>
-        <%=f.hidden_field :room_id %>
+      <%=f.hidden_field :user_id, :value => current_user.id %>
+      <%=f.hidden_field :room_id %>
       <%end%>
     </div>
   </div>
