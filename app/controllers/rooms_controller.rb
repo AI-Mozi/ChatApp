@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_room
+  before_action :set_room
 
   def index
     @rooms = Room.all
@@ -33,9 +33,14 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show
+    @room_message  = Message.new(room: @room)
+    @room_messages = @room.messages.includes(:user)
+  end
+
   private
 
-  def find_room
+  def set_room
     @rooms = Room.all
     @room = Room.find(params[:id]) if params[:id]
   end
