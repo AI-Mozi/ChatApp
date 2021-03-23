@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
 
   def create
     @room_message = @room.messages.create(message_params)
+
+    RoomChannel.broadcast_to(@room, @room_message)
   end
 
   private

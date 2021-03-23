@@ -1,32 +1,34 @@
 <div class="main">
-  <h1>
-    <%= @room.name %>
-  </h1>
+  <div class="main-chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+    <h1>
+      <%= @room.name %>
+    </h1>
 
-  <div class="row chat">
-    <div class="messages">
-      <div class="col s12">
-        <% @room_messages.each do |message| %>
-          <div class="each_message">
-          <img src="<%= gravatar_url(message.user)%>" class="message-avatar circle">
-          <div class="message valign-wrapper">
-            <%= message.message %><br>
-          </div>
-          </div>
-        <%end%>
+    <div class="row chat" data-role="message-template">
+      <div class="messages">
+        <div class="col s12 each_message_js">
+          <% @room_messages.each do |message| %>
+            <div class="each_message">
+              <img src="<%= message.user.gravatar_url%>" class="message-avatar circle" data-role="user-avatar">
+              <div class="message valign-wrapper">
+                <p data-role="message-text"><%= message.message %></p><br>
+              </div>
+            </div>
+          <%end%>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="form">
-    <div class="col s12">
-      <%= form_for @room_message, remote: true do |f|%>
-      <%=f.text_area :message, class: "input-field input inline" %>
-      <%=f.submit "SEND", :class => "btn" %>
+    <div class="form">
+      <div class="col s12">
+        <%= form_for @room_message, remote: true do |f|%>
+          <%=f.text_area :message, class: "input-field input inline" %>
+          <%=f.submit "SEND", :class => "btn" %>
 
-      <%=f.hidden_field :user_id, :value => current_user.id %>
-      <%=f.hidden_field :room_id %>
-      <%end%>
+          <%=f.hidden_field :user_id, :value => current_user.id %>
+          <%=f.hidden_field :room_id %>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>

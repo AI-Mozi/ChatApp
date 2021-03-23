@@ -20,7 +20,7 @@
       <div class="user-view">
         <div class="background">
         </div>
-        <img class="circle" src="<%= gravatar_url(current_user)%>">
+        <img class="circle" src="<%= current_user.gravatar_url %>">
         <span class="name"><%= current_user.username %></span>
         <span class="email"><%= current_user.email %></span>
       </div>
