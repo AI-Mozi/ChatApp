@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
 
     if @room.save
       flash[:notice] = "Room #{@room.name} was created!"
-      redirect_to root_path
+      redirect_to room_path(@room)
     else
       render :new
     end

@@ -1,19 +1,37 @@
 <div class="main">
-  <div class="main-chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+  <div class="main-chat">
     <h1>
       <%= @room.name %>
     </h1>
 
-    <div class="row chat" data-role="message-template">
+    <div class="row chat">
       <div class="messages">
-        <div class="col s12 each_message_js">
+        <div class="col s12" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
           <% @room_messages.each do |message| %>
-            <div class="each_message">
-              <img src="<%= message.user.gravatar_url%>" class="message-avatar circle" data-role="user-avatar">
-              <div class="message valign-wrapper">
-                <p data-role="message-text"><%= message.message %></p><br>
+            <%
+=begin%>
+ <% if message.user_id == current_user.id %>
+              <div class="your_each_message ">      
+                <div class="your_message valign-wrapper">
+                  <p data-role="message-text"><%= message.message %></p><br>
+                </div>
+                <img src="<%= message.user.gravatar_url%>" class="your-message-avatar circle" data-role="user-avatar">
               </div>
-            </div>
+            <% else %> 
+<%
+=end%>
+              <div data-role="message-template" class="each_message">
+                <img src="<%= message.user.gravatar_url%>" class="message-avatar circle" data-role="user-avatar">
+                <div class="message valign-wrapper">
+                  <p data-role="message-text"><%= message.message %></p><br>
+                </div>
+              </div>
+            <%
+=begin%>
+ <% end %>
+            <div style='clear:both'></div> 
+<%
+=end%>
           <%end%>
         </div>
       </div>

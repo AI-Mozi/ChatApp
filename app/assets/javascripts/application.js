@@ -24,11 +24,9 @@ $(function() {
   });
 });
 
-$(function() {
-  $('[data-channel-subscribe="room"]').each(function(index, element) {
-    var $element = $(element),
+$(document).on("turbolinks:load", function() {
+    var $element = $('[data-channel-subscribe="room"]');
         room_id = $element.data('room-id')
-        messageTemplate = $('[data-role="message-template"]');
 
     $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000)        
 
@@ -38,19 +36,21 @@ $(function() {
         room: room_id
       },
       {
-        received: function(data) {
-          var content = messageTemplate.children().find(".each_message").get(0)
-          content = $(content).clone(true);
+        connected(){
+          console.log("Connected");
+        },
 
-          var each_mess = messageTemplate.children().find(".each_message_js");
-          content.find('[data-role="user-avatar"]').attr('src', data.user_avatar_url);
-          content.find('[data-role="message-text"]').text(data.message);
-          //content.find('[data-role="message-date"]').text(data.updated_at);
-          
-          each_mess.append(content);
-          $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000);
+        received(data) {
+          var content = `<div class="each_message">
+                          <img src="${data.user_avatar_url}" class="message-avatar circle">
+                          <div class="message valign-wrapper">
+                            <p>${data.message}</p>
+                          </div>
+                        </div`;
+
+          $element.append(content);
         }
       }
     );
   });
-});
+
