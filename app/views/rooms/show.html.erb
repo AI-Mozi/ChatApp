@@ -39,9 +39,9 @@
 
     <div class="form">
       <div class="col s12">
-        <%= form_for @room_message, remote: true do |f|%>
-          <%=f.text_area :message, class: "input-field input inline" %>
-          <%=f.submit "SEND", :class => "btn" %>
+        <%= form_for @room_message, remote: true, class: "comment-form" do |f|%>
+          <%=f.text_area :message, class: "input-field message-input inline" %>
+          <%=f.submit "SEND", :class => "btn message-btn" %>
 
           <%=f.hidden_field :user_id, :value => current_user.id %>
           <%=f.hidden_field :room_id %>

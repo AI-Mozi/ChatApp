@@ -17,12 +17,12 @@
 //= require materialize
 //= require jquery
 
-
-$(function() {
-  $('#new_room_message').on('ajax:success', function(a, b,c ) {
-    $(this).find('input[type="text"]').val('');
-  });
+// Clear input
+$(document).on("ajax:success", function() {
+  $(".message-input").val('');
 });
+
+// Send message w/o refresh
 
 $(document).on("turbolinks:load", function() {
     var $element = $('[data-channel-subscribe="room"]');
