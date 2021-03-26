@@ -5,7 +5,6 @@
     </h1>
 
     <div class="row chat">
-      <div class="messages">
         <div class="col s12" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
           <% @room_messages.each do |message| %>
             <%
@@ -34,7 +33,6 @@
 =end%>
           <%end%>
         </div>
-      </div>
     </div>
 
     <div class="form">

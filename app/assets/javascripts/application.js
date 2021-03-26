@@ -22,13 +22,17 @@ $(document).on("ajax:success", function() {
   $(".message-input").val('');
 });
 
+// Send message on enter
+
+  
+
 // Send message w/o refresh
 
 $(document).on("turbolinks:load", function() {
     var $element = $('[data-channel-subscribe="room"]');
         room_id = $element.data('room-id')
 
-    $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000)        
+    $('.chat').animate({ scrollTop: $('.chat').prop("scrollHeight")})        
 
     App.cable.subscriptions.create(
       {
@@ -41,14 +45,20 @@ $(document).on("turbolinks:load", function() {
         },
 
         received(data) {
+          //console.log(document.cookie)
+          
+          // if(data.user_id == parts[1]){
+          //   console.log("aww yeas")
+          // }
           var content = `<div class="each_message">
                           <img src="${data.user_avatar_url}" class="message-avatar circle">
                           <div class="message valign-wrapper">
                             <p>${data.message}</p>
                           </div>
                         </div`;
-
+          
           $element.append(content);
+          $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);      
         }
       }
     );
