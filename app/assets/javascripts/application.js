@@ -24,7 +24,7 @@ $(document).on("ajax:success", function() {
 
 // Send message on enter
 
-  
+
 
 // Send message w/o refresh
 
@@ -32,7 +32,7 @@ $(document).on("turbolinks:load", function() {
     var $element = $('[data-channel-subscribe="room"]');
         room_id = $element.data('room-id')
 
-    $('.chat').animate({ scrollTop: $('.chat').prop("scrollHeight")})        
+    $('.chat').scrollTop($('.chat').prop("scrollHeight"));        
 
     App.cable.subscriptions.create(
       {
@@ -45,20 +45,32 @@ $(document).on("turbolinks:load", function() {
         },
 
         received(data) {
-          //console.log(document.cookie)
-          
-          // if(data.user_id == parts[1]){
-          //   console.log("aww yeas")
-          // }
-          var content = `<div class="each_message">
+
+          $.get('/current_user', function(result){
+            var content;
+            if(data.user_id == result.name){
+              console.log("ez");
+              content = `<div class="your_each_message">
+                          <div class="your_message valign-wrapper">
+                            <p>${data.message}</p>
+                          </div>
+                          <img src="${data.user_avatar_url}" class="message-avatar circle">
+
+                        </div>
+                        <div style='clear:both'></div> `;
+            } else {
+              content = `<div class="each_message">
                           <img src="${data.user_avatar_url}" class="message-avatar circle">
                           <div class="message valign-wrapper">
                             <p>${data.message}</p>
                           </div>
-                        </div`;
-          
-          $element.append(content);
-          $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);      
+                        </div>
+                        <div style='clear:both'></div> `;
+            }
+            $element.append(content);
+            $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
+          });
+  
         }
       }
     );

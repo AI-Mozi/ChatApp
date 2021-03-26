@@ -38,6 +38,10 @@ class RoomsController < ApplicationController
     @room_messages = @room.messages.includes(:user)
   end
 
+  def get_current_user
+    render json: {name: current_user.id}
+  end
+  
   private
 
   def set_room

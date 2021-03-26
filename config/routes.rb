@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   resources :rooms
   resources :messages
+
+  get 'current_user' => "rooms#get_current_user"
 end
