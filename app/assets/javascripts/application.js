@@ -22,15 +22,6 @@ $(document).on("ajax:success", function() {
   $(".message-input").val('');
 });
 
-// Send message on enter
-
-$('.message-input').keypress(function(e) {
-  console.log("Test")
-  if(e.which == 13){
-    $(this).closest('form').submit();
-  }
-})
-
 // Send message w/o refresh
 
 $(document).on("turbolinks:load", function() {
@@ -45,10 +36,6 @@ $(document).on("turbolinks:load", function() {
         room: room_id
       },
       {
-        connected(){
-          console.log("Connected");
-        },
-
         received(data) {
 
           $.get('/current_user', function(result){
