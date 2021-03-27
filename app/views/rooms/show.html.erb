@@ -1,11 +1,11 @@
 <div class="main">
-  <div class="main-chat">
+  <div class="main_chat">
     <h1>
       <%= @room.name %>
     </h1>
 
     <div class="row chat">
-        <div class="col s12" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+        <div class="col s12" style="padding: 0" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
           <% @room_messages.each do |message| %>
             <% if message.user_id == current_user.id %>
               <div class="your_each_message ">      
@@ -29,13 +29,7 @@
 
     <div class="message_form">
       <div class="col s12">
-        <%= form_for @room_message, remote: true, class: "comment-form" do |f|%>
-          <%=f.text_area :message, class: "input-field message-input inline" %>
-          <%=f.submit "SEND", :class => "btn message_btn" %>
-
-          <%=f.hidden_field :user_id, :value => current_user.id %>
-          <%=f.hidden_field :room_id %>
-        <%end%>
+        <%= render 'messageform' %>
       </div>
     </div>
   </div>

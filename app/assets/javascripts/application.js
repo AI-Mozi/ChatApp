@@ -24,7 +24,12 @@ $(document).on("ajax:success", function() {
 
 // Send message on enter
 
-
+$('.message-input').keypress(function(e) {
+  console.log("Test")
+  if(e.which == 13){
+    $(this).closest('form').submit();
+  }
+})
 
 // Send message w/o refresh
 
@@ -49,7 +54,6 @@ $(document).on("turbolinks:load", function() {
           $.get('/current_user', function(result){
             var content;
             if(data.user_id == result.name){
-              console.log("ez");
               content = `<div class="your_each_message">
                           <div class="your_message valign-wrapper">
                             <p>${data.message}</p>
@@ -76,3 +80,19 @@ $(document).on("turbolinks:load", function() {
     );
   });
 
+  // Sidenav
+
+  document.addEventListener('turbolinks:load', function() {
+    elem = document.querySelector('#nav-mobile');
+    instance = new M.Sidenav(elem, {});
+  });
+
+  document.addEventListener('turbolinks:before-visit', function() {
+    elem = document.querySelector('#nav-mobile');
+    instance = M.Sidenav.getInstance(elem);
+    if (instance){
+      instance.destroy();
+    }
+  });
+
+  

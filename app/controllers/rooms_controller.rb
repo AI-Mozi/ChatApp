@@ -3,7 +3,6 @@ class RoomsController < ApplicationController
   before_action :set_room
 
   def index
-    @rooms = Room.all
   end
 
   def new

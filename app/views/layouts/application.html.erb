@@ -15,6 +15,9 @@
   <p class="alert"><%= alert %></p>
   
   <% if user_signed_in? %>
+  <nav class="hide-on-large-only navbar"> 
+    <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </nav>
   <ul id="nav-mobile" class="sidenav sidenav-fixed">
     <li>
       <div class="user-view">
@@ -28,13 +31,22 @@
     <li>
       <div class="divider"></div>
     </li>
-    <%= render "rooms/list" %>
+      <%= render "rooms/list" %>
     <li>
       <div class="divider"></div>
     </li>
     <li><%= link_to "Edit Profile", edit_user_registration_path, class: "text-white" %></li>
     <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <div class="copy">
+      <p>AI-Mozi</p>
+    </div>
   </ul>
+  <%else%>
+    <style>
+      .main{
+        padding-left: 0;
+      }
+    </style>
   <%end%>
 
   <%= yield %>
