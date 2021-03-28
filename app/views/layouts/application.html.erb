@@ -32,13 +32,13 @@
         <span class="email"><%= current_user.email %></span>
       </div>
     </li>
-    <li>
-      <div class="divider"></div>
-    </li>
+    
+    <li><div class="divider"></div></li>
       <%= render "rooms/list" %>
-    <li>
-      <div class="divider"></div>
-    </li>
+    <li><div class="divider"></div></li>
+      <%= render "rooms/userlist" %>
+    <li><div class="divider"></div></li>
+
     <li><%= link_to "Edit Profile", edit_user_registration_path, class: "text-white" %></li>
     <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <div class="copy">

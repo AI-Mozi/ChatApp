@@ -6,24 +6,7 @@
 
     <div class="row chat">
         <div class="col s12" style="padding: 0" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
-          <% @room_messages.each do |message| %>
-            <% if message.user_id == current_user.id %>
-              <div class="your_each_message ">      
-                <div class="your_message valign-wrapper">
-                  <p data-role="message-text"><%= message.message %></p><br>
-                </div>
-                <img src="<%= message.user.gravatar_url%>" class="your-message-avatar circle" data-role="user-avatar">
-              </div>
-            <% else %>
-              <div data-role="message-template" class="each_message">
-                <img src="<%= message.user.gravatar_url%>" class="message-avatar circle" data-role="user-avatar">
-                <div class="message valign-wrapper">
-                  <p data-role="message-text"><%= message.message %></p><br>
-                </div>
-              </div>
-            <%end%>
-            <div style='clear:both'></div>
-          <%end%>
+            <%= render 'messages' %>
         </div>
     </div>
 

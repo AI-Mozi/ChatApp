@@ -39,10 +39,7 @@ html{
   width: 64px;
   height: 64px;
 }
-.room-list{
-  text-align: center;
-  padding-top: 25px;
-}
+//navigarion
 .sidenav{
   height: 100vh;
   width: 300px !important;
@@ -51,6 +48,53 @@ html{
       color: white !important;
     } 
   color: white;
+}
+.room_list ,.user_list{
+  text-align: center;
+  padding-top: 25px;
+    h5{
+      margin: 0;
+      font-weight: 500;
+      padding-bottom: 5px;
+    }
+}
+.user_list{
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px 0;
+    img{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+}
+i.active_user{
+  color: green;
+}
+.navbar{
+  background-color: #4e5458;
+}
+
+@media screen and (max-width: 992px){
+  .main{
+    padding-left: 26px;
+    padding-right: 20px;
+  }
+}
+::-webkit-scrollbar {
+  width: 0;  
+  background: transparent; 
+}
+.copy{
+  vertical-align: bottom;
+  bottom: 10px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
 }
 //input
 .message-input{
@@ -83,6 +127,7 @@ input{
   background-color: #26a69a;
   padding: 0 !important;
 }
+//chat
 .chat{
   background-color:  #616a6e;
   margin: 0;
@@ -134,28 +179,18 @@ input{
   width: 32px;
   height: 32px;
 }
-//NAVBAR
-.navbar{
-  background-color: #4e5458;
+.each_message .user_nickname,
+.your_each_message .user_nickname{
+  position: relative;
+  bottom: 30px;
+  left: 0px;
+  // visibility: hidden;
 }
-
-@media screen and (max-width: 992px){
-  .main{
-    padding-left: 26px;
-    padding-right: 20px;
-  }
+.each_message:hover .user_nickname, 
+.your_each_message:hover .user_nickname{
+  visibility: visable;
 }
-::-webkit-scrollbar {
-  width: 0;  
-  background: transparent; 
-}
-.copy{
-  vertical-align: bottom;
-  bottom: 10px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-}
+//notifications
 .notice, .alert{
   padding: 5px;
   color: white;
