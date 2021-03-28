@@ -1,6 +1,6 @@
 <%= form_for @room_message, remote: true, class: "comment-form" do |f|%>
   <%=f.text_field :message, class: "input-field message-input inline", autocomplete: "off" %>
-  <%=f.submit "SEND", :class => "btn message_btn" %>
+  <%=f.submit "SEND", :class => "message_btn" %>
 
   <%=f.hidden_field :user_id, :value => current_user.id %>
   <%=f.hidden_field :room_id %>

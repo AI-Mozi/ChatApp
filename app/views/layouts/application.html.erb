@@ -11,9 +11,13 @@
 </head>
 
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
+  <% if flash[:notice] %>
+    <p class="notice center-align"><%= notice %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="alert center-align"><%= alert %></p>
+  <% end %>
+
   <% if user_signed_in? %>
   <nav class="hide-on-large-only navbar"> 
     <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
