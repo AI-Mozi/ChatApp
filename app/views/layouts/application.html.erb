@@ -19,8 +19,10 @@
   <% end %>
 
   <% if user_signed_in? %>
-  <nav class="hide-on-large-only navbar"> 
-    <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <nav class="hide-on-large-only nav">
+    <div class="nav-wrapper"> 
+      <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
   </nav>
   <ul id="nav-mobile" class="sidenav sidenav-fixed">
     <li>
