@@ -53,6 +53,16 @@
     </style>
   <%end%>
 
+   <div id="create_room" class="modal">
+    <div class="modal-content center-align">
+      <h4>Create new room</h4>
+      <%= render 'rooms/form' %>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
   <%= yield %>
 </body>
 

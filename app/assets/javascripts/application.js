@@ -40,26 +40,28 @@ $(document).on("turbolinks:load", function() {
 
           $.get('/current_user', function(result){
             var content;
-            if(data.user_id == result.name){
-              content = `<div class="your_each_message">
-                          <div class="your_message valign-wrapper">
-                            <p>${data.message}</p>
-                          </div>
-                          <img src="${data.user_avatar_url}" class="message-avatar circle">
+            if((data.message).length > 0){
+              if(data.user_id == result.name){
+                content = `<div class="your_each_message">
+                            <div class="your_message valign-wrapper">
+                              <p>${data.message}</p>
+                            </div>
+                            <img src="${data.user_avatar_url}" class="message-avatar circle">
 
-                        </div>
-                        <div style='clear:both'></div> `;
-            } else {
-              content = `<div class="each_message">
-                          <img src="${data.user_avatar_url}" class="message-avatar circle">
-                          <div class="message valign-wrapper">
-                            <p>${data.message}</p>
                           </div>
-                        </div>
-                        <div style='clear:both'></div> `;
-            }
-            $element.append(content);
-            $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
+                          <div style='clear:both'></div> `;
+              } else {
+                content = `<div class="each_message">
+                            <img src="${data.user_avatar_url}" class="message-avatar circle">
+                            <div class="message valign-wrapper">
+                              <p>${data.message}</p>
+                            </div>
+                          </div>
+                          <div style='clear:both'></div> `;
+              }
+              $element.append(content);
+              $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
+          }
           });
   
         }
@@ -82,4 +84,16 @@ $(document).on("turbolinks:load", function() {
     }
   });
 
-  
+  //Modal room
+  document.addEventListener('turbolinks:load',function(){
+    element = document.querySelector('#create_room')
+    instance = M.Modal.init(element, {})
+  });
+
+  document.addEventListener('turbolinks:before-visit', function() {
+    element = document.querySelector('#create_room')
+    instance = M.Modal.getInstance(element);
+    if (instance){
+      instance.destroy();
+    }
+  });
