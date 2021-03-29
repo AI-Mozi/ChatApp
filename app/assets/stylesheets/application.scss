@@ -39,10 +39,7 @@ html{
   width: 64px;
   height: 64px;
 }
-.room-list{
-  text-align: center;
-  padding-top: 25px;
-}
+//navigarion
 .sidenav{
   height: 100vh;
   width: 300px !important;
@@ -51,6 +48,54 @@ html{
       color: white !important;
     } 
   color: white;
+}
+.room_list ,.user_list{
+  text-align: center;
+    h5{
+      margin: 0;
+      font-weight: 500;
+      padding-bottom: 5px;
+    }
+    overflow-y: scroll;
+    max-height: 30vh;;
+}
+.user_list{
+  max-height: 30vh;
+  padding-top: 5px;
+}
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px 0;
+    img{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+}
+i.active_user{
+  color: green;
+}
+.navbar{
+  background-color: #4e5458;
+}
+
+@media screen and (max-width: 992px){
+  .main{
+    padding-left: 26px;
+    padding-right: 20px;
+  }
+}
+::-webkit-scrollbar {
+  width: 0;  
+  background: transparent; 
+}
+.copy{
+  vertical-align: bottom;
+  bottom: 10px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
 }
 //input
 .message-input{
@@ -83,6 +128,7 @@ input{
   background-color: #26a69a;
   padding: 0 !important;
 }
+//chat
 .chat{
   background-color:  #616a6e;
   margin: 0;
@@ -134,32 +180,17 @@ input{
   width: 32px;
   height: 32px;
 }
-//NAVBAR
-.navbar{
-  background-color: #4e5458;
-}
-
-@media screen and (max-width: 992px){
-  .main{
-    padding-left: 26px;
-    padding-right: 20px;
-  }
-}
-::-webkit-scrollbar {
-  width: 0;  
-  background: transparent; 
-}
-.copy{
-  vertical-align: bottom;
-  bottom: 10px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-}
+//notifications
 .notice, .alert{
   padding: 5px;
   color: white;
 }
 .notice{
   background-color:#2b2e30;
+}
+.create_room_input{
+  line-height:40px;
+}
+.create_button{
+  padding-top: 10px;
 }

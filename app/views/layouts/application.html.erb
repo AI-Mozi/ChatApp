@@ -19,8 +19,10 @@
   <% end %>
 
   <% if user_signed_in? %>
-  <nav class="hide-on-large-only navbar"> 
-    <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <nav class="hide-on-large-only nav">
+    <div class="nav-wrapper"> 
+      <a data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
   </nav>
   <ul id="nav-mobile" class="sidenav sidenav-fixed">
     <li>
@@ -32,13 +34,13 @@
         <span class="email"><%= current_user.email %></span>
       </div>
     </li>
-    <li>
-      <div class="divider"></div>
-    </li>
+    
+    <li><div class="divider"></div></li>
       <%= render "rooms/list" %>
-    <li>
-      <div class="divider"></div>
-    </li>
+    <li><div class="divider"></div></li>
+      <%= render "rooms/userlist" %>
+    <li><div class="divider"></div></li>
+
     <li><%= link_to "Edit Profile", edit_user_registration_path, class: "text-white" %></li>
     <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <div class="copy">
@@ -52,6 +54,16 @@
       }
     </style>
   <%end%>
+
+   <div id="create_room" class="modal">
+    <div class="modal-content center-align">
+      <h4>Create new room</h4>
+      <%= render 'rooms/form' %>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 
   <%= yield %>
 </body>

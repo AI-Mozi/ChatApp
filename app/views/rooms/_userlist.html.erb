@@ -1,0 +1,14 @@
+<div class="user_list center-align">
+  <h5>USERS LIST</h5>
+  <% if User.present? %>
+    <% User.all.each do |user| %>
+    <div class="user valign-wrapper">
+    <% if user.online? %>
+        <i class="material-icons tiny active_user">lens</i>
+      <% end %>
+      <img src="<%= user.gravatar_url%>" class="your-message-avatar circle" data-role="user-avatar">
+      <p><%= user.username %></p> 
+    </div>
+    <% end %>
+  <% end %>
+</div>
