@@ -5,7 +5,6 @@
       <p data-role="message-text"><%= message.message %></p><br>
     </div>
     <img src="<%= message.user.gravatar_url%>" class="your-message-avatar circle" data-role="user-avatar" alt="<%= message.user.username %>">
-    <p class="user_nickname"><% message.user %></p>
   </div>
   <% else %>
   <div data-role="message-template" class="each_message">
@@ -13,7 +12,6 @@
     <div class="message valign-wrapper">
       <p data-role="message-text"><%= message.message %></p><br>
     </div>
-    <p class="user_nickname"><% message.user %></p>
   </div>
   <%end%>
   <div style='clear:both'></div>
