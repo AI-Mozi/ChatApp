@@ -51,16 +51,17 @@ html{
 }
 .room_list ,.user_list{
   text-align: center;
-  padding-top: 25px;
     h5{
       margin: 0;
       font-weight: 500;
       padding-bottom: 5px;
     }
+    overflow-y: scroll;
+    max-height: 30vh;;
 }
 .user_list{
-  overflow-y: scroll;
-  max-height: 50vh;
+  max-height: 30vh;
+  padding-top: 5px;
 }
 .user{
   display: flex;
@@ -200,4 +201,7 @@ input{
 }
 .create_room_input{
   line-height:40px;
+}
+.create_button{
+  padding-top: 10px;
 }

@@ -1,14 +1,5 @@
+<div class="center-align create_button"><a class="waves-effect waves-light btn modal-trigger" href="#create_room">Create new room</a></div>
 <div class="room_list center-align">
-
-<%
-=begin%>
- <%= link_to new_room_path, class: "btn" do %>
-  Create new room
-<% end %> 
-<%
-=end%>
-   <a class="waves-effect waves-light btn modal-trigger" href="#create_room">Create new room</a>
-
   <% if @rooms.present? %>
     <% @rooms.each do |room| %>
       <li><%= link_to room.name, room_path(room) %></li>
