@@ -37,7 +37,7 @@ $(document).on("turbolinks:load", function() {
       },
       {
         received(data) {
-
+          console.log(data);
           $.get('/current_user', function(result){
             var content;
             if((data.message).length > 0){
@@ -56,8 +56,7 @@ $(document).on("turbolinks:load", function() {
                             <div class="message valign-wrapper">
                               <p>${data.message}</p>
                             </div>
-                          </div>
-                          <div style='clear:both'></div> `;
+                          </div>`;
               }
               $element.append(content);
               $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
