@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
 
   def show
     @room_message  = Message.new(room: @room)
-    @room_messages = @room.messages.includes(:user).last(400)
+    @room_messages = @room.messages.includes(:user).order('created_at')
   end
 
   def get_current_user

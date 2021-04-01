@@ -8,10 +8,13 @@ class Message < ApplicationRecord
   end
 
   def display_time
-    if self.created_at > (Time.now - 24.hours)
-      (self.created_at).strftime('%H:%M')
+    creation_time = self.created_at
+    if creation_time > (Time.now - 24.hours)
+      creation_time.strftime('%H:%M')
+    elsif creation_time > (Time.now - 48.hours)
+      "Yesterday"
     else
-      (self.created_at).strftime('%e %B %Y at %H:%M')
+      creation_time.strftime('%e %B %Y at %H:%M')
     end
   end
 end

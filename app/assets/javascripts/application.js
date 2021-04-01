@@ -40,10 +40,11 @@ $(document).on("turbolinks:load", function() {
           $.get('/current_user', function(result){
             var content;
             if((data.message).length > 0){
+              let current_user = (data.message).replace("<script>","").replace("</script>","");
               if(data.user_id == result.name){
                 content = `<div class="your_each_message">
                             <div class="your_message valign-wrapper">
-                              <p>${data.message}</p>
+                              <p>${current_user}</p>
                             </div>
                             <img src="${data.user_avatar_url}" class="message-avatar circle">
                           </div>
@@ -52,7 +53,7 @@ $(document).on("turbolinks:load", function() {
                 content = `<div class="each_message">
                             <img src="${data.user_avatar_url}" class="message-avatar circle">
                             <div class="message valign-wrapper">
-                              <p>${data.message}</p>
+                              <p>${current_user}</p>
                             </div>
                           </div>`;
               }
@@ -60,7 +61,6 @@ $(document).on("turbolinks:load", function() {
               $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
           }
           });
-  
         }
       }
     );
@@ -94,18 +94,5 @@ $(document).on("turbolinks:load", function() {
       instance.destroy();
     }
   });
-
-  //Loading messages partly
-
-  (function() {
-    this.fetchMessages = function() {
-      var after;
-      after = $('.test')[$('.test').length - 1].value;
-      return $.get($('#messages').data('url'), {
-        after: after
-      });
-    };
-  
-  }).call(this);
 
   
