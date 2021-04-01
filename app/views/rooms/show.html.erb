@@ -5,7 +5,7 @@
     </h1>
 
     <div class="row chat">
-        <div class="col s12" style="padding: 0" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+        <div id="messages" class="col s12" style="padding: 0" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
             <%= render 'messages' %>
         </div>
     </div>

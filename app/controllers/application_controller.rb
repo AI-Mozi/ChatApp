@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :all_rooms
   before_action :all_rooms
   before_action :set_online
+  protect_from_forgery with: :exception
 
   private
 

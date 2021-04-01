@@ -37,7 +37,6 @@ $(document).on("turbolinks:load", function() {
       },
       {
         received(data) {
-          console.log(data);
           $.get('/current_user', function(result){
             var content;
             if((data.message).length > 0){
@@ -47,7 +46,6 @@ $(document).on("turbolinks:load", function() {
                               <p>${data.message}</p>
                             </div>
                             <img src="${data.user_avatar_url}" class="message-avatar circle">
-
                           </div>
                           <div style='clear:both'></div> `;
               } else {
@@ -96,3 +94,18 @@ $(document).on("turbolinks:load", function() {
       instance.destroy();
     }
   });
+
+  //Loading messages partly
+
+  (function() {
+    this.fetchMessages = function() {
+      var after;
+      after = $('.test')[$('.test').length - 1].value;
+      return $.get($('#messages').data('url'), {
+        after: after
+      });
+    };
+  
+  }).call(this);
+
+  

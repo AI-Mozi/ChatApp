@@ -1,6 +1,6 @@
 <% @room_messages.each do |message| %>
   <% if message.user_id == current_user.id %>
-  <div class="your_each_message ">
+  <div class="your_each_message">
     <div class="your_message valign-wrapper" title="<%= message.display_time%>">
       <p data-role="message-text"><%= message.message %></p><br>
     </div>
