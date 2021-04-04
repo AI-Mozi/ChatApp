@@ -39,6 +39,7 @@ gem 'devise'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'jquery-rails'
 gem 'redis'
+gem 'shrine', '~> 2.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

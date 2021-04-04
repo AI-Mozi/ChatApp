@@ -1,0 +1,45 @@
+Miłosz Bieniek
+Ruby on Rails Developer
+
+570180091
+
+My name is Miłosz and I am a hard working and self-taught Ruby developer who is looking for opportunities to develop programming abilities.
+
+PERSONAL INFORMATION
+  Address: , , 
+  Nationality: 
+  Driving License: 
+  Hobbies: 
+
+SOCIAL PROFILES
+  * GitHub: https://github.com/AI-Mozi
+  * Linkedin: https://www.linkedin.com/in/bieniekmilosz/
+
+LANGUAGES
+
+EDUCATION
+  * September 2017 – Present
+    Technikum nr.1 im.Władysława Szybińskiego, Cieszyn 
+
+PROJECTS
+  * Alert Walutowy, , 
+
+    Rails web application for tracking exchange rates. You can choose currencies that interest you, view their charts and get messages when it reaches the selected value.
+Link to site
+Link to repository
+Ruby | Ruby on Rails | Databases
+  * Chat Application, , 
+
+    Chat application that allows you to create rooms and send messages in them.
+Link to site 
+Link to repository
+Ruby | Ruby on Rails | JavaScript | Databases
+COMPUTING SKILLS
+  * , , 
+
+    -Ruby | Ruby on Rails
+-JavaScript
+-HTML/CSS
+-MySQL
+-Git | GitHub
+-Materialize framework

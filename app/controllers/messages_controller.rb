@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
 
   def create
     @room_message = @room.messages.create(message_params)
-
     RoomChannel.broadcast_to(@room, @room_message)
   end
 
@@ -15,6 +14,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:user_id, :room_id, :message)
+    params.require(:message).permit(:user_id, :room_id, :message, :image)
   end
 end

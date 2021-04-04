@@ -106,9 +106,8 @@ i.active_user{
   border-radius: 0 0 0 25px !important;
   height: 40px !important;
   box-sizing: border-box !important;
-  padding-right: 80px;
   overflow: hidden;
-  width: calc(100% - 80px) !important;
+  width: calc(100% - 120px) !important;
 }
 input{
   font-size: 20px !important;
@@ -127,6 +126,18 @@ input{
   float: right;
   background-color: #26a69a;
   padding: 0 !important;
+}
+.file_field_button{
+  height: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 40px;
+  font-size: 15px;
+  box-sizing: border-box !important;
+  float: right;
+  background-color: #215c56;
+  padding: 5px 0 0 5px !important;
 }
 //chat
 .chat{
@@ -180,6 +191,33 @@ input{
   width: 32px;
   height: 32px;
 }
+.your_file{
+  float: right;
+  margin-right: 7px;
+  background-color: rgb(0, 153, 255);
+  max-width: 85%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 15px;
+  font-size: 16px;
+    a{
+      color: white;
+    }
+}
+.file{
+  margin-right: 7px;
+  max-width: 85%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 15px;
+  font-size: 16px;
+    a{
+      color: white;
+      background-color: #6f9bce;
+      padding: 10px;
+      border-radius: 15px;
+    }
+}
 //notifications
 .notice, .alert{
   padding: 5px;
@@ -197,4 +235,12 @@ input{
 //about
 .about-txt{
   width: 100%;
+}
+//clearfix
+.clearfix:after{
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }

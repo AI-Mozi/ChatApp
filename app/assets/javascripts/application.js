@@ -20,6 +20,7 @@
 // Clear input
 $(document).on("ajax:success", function() {
   $(".message-input").val('');
+  $(".upload_file").val('');
 });
 
 // Send message w/o refresh
@@ -39,16 +40,22 @@ $(document).on("turbolinks:load", function() {
         received(data) {
           $.get('/current_user', function(result){
             var content;
-            if((data.message).length > 0){
-              let current_user = (data.message).replace("<script>","").replace("</script>","");
+            if((data.message).length > 0 || (data.image_data != null)){
+              let current_user = (data.message).replace("<script>","<script").replace("</script>","</script");
               if(data.user_id == result.name){
                 content = `<div class="your_each_message">
                             <div class="your_message valign-wrapper">
                               <p>${current_user}</p>
                             </div>
                             <img src="${data.user_avatar_url}" class="message-avatar circle">
-                          </div>
-                          <div style='clear:both'></div> `;
+                          </div>`;
+                if(data.image_data != null){
+                    let parsed_image = JSON.parse(data.image_data);
+                    let image_metadata = parsed_image.metadata;
+
+                    content += ` <div class="clearfix"></div>
+                              <div class="your_file"><a target="_blank" href="/uploads/${parsed_image['id']}">${image_metadata['filename']}</a></div>`
+                }
               } else {
                 content = `<div class="each_message">
                             <img src="${data.user_avatar_url}" class="message-avatar circle">
@@ -56,8 +63,14 @@ $(document).on("turbolinks:load", function() {
                               <p>${current_user}</p>
                             </div>
                           </div>`;
+                if(data.image_data != null){
+                    let parsed_image = JSON.parse(data.image_data);
+                    let image_metadata = parsed_image.metadata;
+                    
+                    content += ` <div class="file"><a target="_blank" href="/uploads/${parsed_image['id']}">${image_metadata['filename']}</a></div>`
+                }
               }
-              $element.append(content);
+              $element.append('<div class="clearfix">'+ content +'</div>');
               $('.chat').animate({ scrollTop: $element.prop("scrollHeight")}, 1000);  
           }
           });

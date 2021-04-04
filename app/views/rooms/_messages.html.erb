@@ -1,18 +1,35 @@
 <% @room_messages.each do |message| %>
+<div class="clearfix">
   <% if message.user_id == current_user.id %>
-  <div class="your_each_message">
+
+  <div class="your_each_message clearfix">
+    <% if !(message.message.empty?) %>
     <div class="your_message valign-wrapper" title="<%= message.display_time%>">
       <p data-role="message-text"><%= message.message %></p><br>
     </div>
+    <% end %>
     <img src="<%= message.user.gravatar_url%>" class="your-message-avatar circle" data-role="user-avatar" title="<%= message.user.username %>">
   </div>
+
+  <% if message.image_data? %>
+  <div class="clearfix"></div>
+  <div class="your_file" title="Owner: <%= message.user.username%>"><%= link_to message.image.original_filename, message.image.url, target: "_blank" %></div>
+  <% end %>
+
   <% else %>
+
   <div data-role="message-template" class="each_message">
     <img src="<%= message.user.gravatar_url%>" class="message-avatar circle" data-role="user-avatar" title="<%= message.user.username %>">
-    <div class="message valign-wrapper" title="<%= message.display_time%>">
-      <p data-role="message-text"><%= message.message %></p><br>
-    </div>
+    <% if !(message.message.empty?) %>
+      <div class="message valign-wrapper" title="<%= message.display_time%>">
+        <p data-role="message-text"><%= message.message %></p><br>
+      </div>
+    <% end %>
   </div>
+
+  <% if message.image_data? %>
+  <div class="file" title="Owner: <%= message.user.username%>"><%= link_to message.image.original_filename, message.image.url, target: "_blank" %></div>
+  <% end %>
   <%end%>
-  <div style='clear:both'></div>
+</div>
 <%end%>
