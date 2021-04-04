@@ -14,6 +14,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:user_id, :room_id, :message, :image)
+    params.require(:message).permit(:user_id, :room_id, :message, :image_data)
   end
 end
